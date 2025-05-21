@@ -26,7 +26,7 @@ def preprocess_data(csv_filename, student_column, clip_column, time_column, clip
         data = data[data[TARGET_FEATURES].sum(axis=1) < 2]
 
     data = data.sort_values([student_column, 'clip_sequence', clip_column]).reset_index()
-    parsed_data = parse_data(data, 'user_id')
+    parsed_data = parse_data(data, student_column)
 
     max_expert_length = max(parsed_data['length'])
     padded_expert_input = [pad_data(i, max_expert_length) for i in parsed_data['input']]

@@ -16,10 +16,6 @@ def apply_clip_sequence_df(df: pd.DataFrame, time_col: str, group_col: str, thre
     """
     df = df.copy()
 
-    # clean up '#N/A' and 'NA'
-    df = df.replace({'#N/A': '', 'NA': ''})
-    df = df.fillna('')
-
     # make sure the time column is numeric
     df[time_col] = df[time_col].astype(float)
 
